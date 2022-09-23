@@ -3,6 +3,7 @@ package com.lugare_v
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.FirebaseApp
@@ -62,7 +63,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hacerLogin() {
-        TODO("Not yet implemented")
+        val email = binding.etCorreo.text.toString()
+        val contra = binding.etContraseA.text.toString()
+        Log.d("Autenticandonos","Haciendo llamada de autenticacion")
+        //utlizo el auth para el registro
+
+        auth.signInWithEmailAndPassword(email,contra)
+            .addOnCompleteListener(this) { task->
+                if (task.isSuccessful){
+                    Log.d("Autenticado","se autentico")
+                    val user = auth.currentUser
+                    refresca(user)
+                }else {
+                    Toast.makeText(baseContext,"ERROR",Toast.LENGTH_LONG).show()
+                    refresca(null)
+                }
+
+            }
     }
+
+    //esto se ejecuta para validar si hay un usario autenticado
+
+    public override fun onStart() {
+        super.onStart()
+        val usuario = auth.currentUser
+        refresca(usuario)
+    }
+
+
 }
 
