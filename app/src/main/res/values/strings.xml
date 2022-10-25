@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Lugare_v</string>
     <string name="tv_correo">e-mail</string>
     <string name="tv_contraseña">contraseña</string>
@@ -19,10 +19,33 @@
     <string name="msg_nombre">Nombre del lugar</string>
     <string name="msg_correo">Correo(ejemplo@xxx.com)</string>
     <string name="msg_telefono">Telefono(9999–9999)</string>
-    <string name="msg_web">Sitio web</string>
-    <string name="BT_add_lugar">Agregar un lugar</string>
+    <string name="msg_web">Pagina Web</string>
+    <string name="BT_add_lugar">Agregar lugar</string>
+    <string name="BT_update_lugar">Actualizar lugar</string>
     <string name="msg_lugar_added">Lugar Agregado</string>
-    <string name="msg_data">Faltan datos!</string>
+    <string name="msg_lugar_update">Lugar Actualizado</string>
+
+
+    <string name="bt_delete_lugar">Eliminar lugar</string>
+    <string name="msg_lugar_deleted">Lugar Eliminado</string>
+    <string name="msg_pregunta_eliminar">Esta seguro de elimar el lugar?</string>
+    <string name="msg_si">Si</string>
+    <string name="msg_no">No</string>
+
+    <string name="msg_enviar_correo">Enviar correo electrónico</string>
+    <string name="msg_phone_call">Realizar llamada telefónica</string>
+    <string name="msg_whatsapp_send">Enviar mensaje WhatsApp</string>
+    <string name="msg_web_view">Abrir sitio Web</string>
+    <string name="msg_map_view">Ver lugar en mapa</string>
+    <string name="tv_latitud_lb">Latitud</string>
+    <string name="tv_longitud_lb">Longitud</string>
+    <string name="tv_altura_lb">Altura</string>
+    <string name="msg_saludos">Saludos amigos</string>
+    <string name="msg_mensaje_correo">Le escribo este correo para</string>
+    <string name="msg_datos">Faltan datos</string>
+    <string name="error">Error</string>
+
+
 
 
 
