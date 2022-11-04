@@ -36,7 +36,7 @@ class LugarFragment : Fragment() {
         //Activar el recycler view
         val lugarAdapter=LugarAdapter()
         val reciclador = binding.reciclador
-        reciclador.adapter = LugarAdapter
+        reciclador.adapter = lugarAdapter
         reciclador.layoutManager = LinearLayoutManager(requireContext())
         lugarViewModel.getLugares.observe(viewLifecycleOwner){
             lugares -> lugarAdapter.setLugares(lugares)

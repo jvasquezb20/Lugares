@@ -82,7 +82,7 @@ class AddLugarFragment : Fragment() {
         val altura= binding.tvAltura.text.toString().toDouble()
 
         if (nombre.isNotEmpty()){ //al menos tenemos un nombre
-            val lugar= Lugar(0,nombre,correo,telefono,web,
+            val lugar= Lugar("",nombre,correo,telefono,web,
                 latitud,longitud,altura, " "," ")
 
             lugarViewModel.saveLugar(lugar)
