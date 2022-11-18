@@ -117,7 +117,7 @@ class AddLugarFragment : Fragment() {
 
     }
 
-    private fun subeImagen(rutaAudio: String) {
+    private fun subeImagen(rutaPublicaAudio: String) {
         binding.msgMensaje.text = getString(R.string.msg_subiendo_imagen)
         val imagenFile = imagenUtiles.imagenFile
         if (imagenFile.exists() && imagenFile.isFile && imagenFile.canRead()){

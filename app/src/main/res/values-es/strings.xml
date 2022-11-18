@@ -1,4 +1,5 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
     <string name="app_name" translatable="false">Lugare_v</string>
     <string name="tv_correo">e-mail</string>
     <string name="tv_contraseña">contraseña</string>
@@ -60,8 +61,4 @@
     <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
     <string name="Todo">Luego…</string>
-
-<string name="defaul_web_client_id_R" translatable="false">60984927036-295anc1524mtkic5f25k1bfct5g2673i.apps.googleusercontent.com</string>
-
-
 </resources>

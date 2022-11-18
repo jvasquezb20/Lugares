@@ -6,14 +6,25 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.lugare_v.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+
+
+
 
     private lateinit var auth : FirebaseAuth
 
@@ -35,6 +46,51 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btLogin.setOnClickListener{hacerLogin()}
+
+        val gso = GoogleSignInOptions.Builder(
+            GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this,gso)
+        binding.google.setOnClickListener{googleSignIn()}
+
+    }
+
+    private fun googleSignIn(){
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent,5000)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==5000){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try{
+                val cuenta = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(cuenta.idToken!!)
+            }catch(e: ApiException){
+
+            }
+
+        }
+
+    }
+
+
+    private fun firebaseAuthWithGoogle(idToken: String){
+        val credential = GoogleAuthProvider.getCredential(idToken,null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if(task.isSuccessful){
+                    val user= auth.currentUser
+                    refresca(user)
+                }else{
+                    refresca(null)
+                }
+
+            }
     }
 
     private fun hacerRegistro() {
